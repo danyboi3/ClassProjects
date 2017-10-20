@@ -53,14 +53,8 @@ public class TwoButtons extends Application {
 
         Button btnSetText = new Button();
         btnSetText.setText("Set Random Text");
-        btnSetText.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                lblText.setText(getRandomMessage());
-            }
-        });
-
+        btnSetText.setOnAction(new RandomTextEventHandler());
+          
         Button btnSetColor = new Button();
         btnSetColor.setText("Set Random Color");
         btnSetColor.setOnAction(new EventHandler<ActionEvent>() {
@@ -88,7 +82,15 @@ public class TwoButtons extends Application {
         primaryStage.show();
 
     }
-
+    
+    private class RandomTextEventHandler implements EventHandler<ActionEvent> {
+  	  
+        @Override
+        public void handle(ActionEvent event) {
+            lblText.setText(getRandomMessage());
+        }
+    }
+    
 //    private class RandomColorEventHandler implements EventHandler<ActionEvent> {
 //        @Override
 //        public void handle(ActionEvent event) {
