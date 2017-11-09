@@ -82,8 +82,16 @@ public class SimpleEditor {
 
     public String readFile() throws FileNotFoundException, IOException {
         // TODO: task 1
+    	try {
     	String content = new String(Files.readAllBytes(Paths.get(theFile.getPath())));
     	return content;
+    	}
+    	catch(FileNotFoundException s){
+    		return "File not found";
+    	}
+    	catch(IOException t) {
+    		return "Input/Output Exception";
+    	}
     }
     
     public void setEditorContentChanged(boolean changed) {
@@ -96,6 +104,14 @@ public class SimpleEditor {
 
     public void saveTheFile(String htmlText) throws FileNotFoundException, IOException {
         // TODO: task 2
+    	try {
     	Files.write(Paths.get(theFile.getPath()), htmlText.getBytes());
+    	}
+    	catch(FileNotFoundException a){
+    		System.out.println("File not found");
+    	}
+    	catch(IOException b) {
+    		System.out.println("Input/Output Exception");
+    	}
     }
 }
